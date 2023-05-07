@@ -14,7 +14,8 @@ public:
 		cout << -x << endl;
 	}
 };
-int  main()
+int main()
 {
 	A a1, a2(4);
+	return 0;
 }
