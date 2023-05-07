@@ -5,7 +5,11 @@ class A
 {
 	int x;
 public:
-	A(int x = 3) :x(x)
+	A(const int x) :x(x)
+	{
+		cout << x << endl;
+	}
+	A(const A& obj) :x(obj.x + 1)
 	{
 		cout << x << endl;
 	}
@@ -16,6 +20,10 @@ public:
 };
 int main()
 {
-	A a1, a2(4);
+	A* p1 = new A(3);
+	A* p2 = new A(*p1);
+	delete p1;
+	delete p2;
 	return 0;
 }
+
