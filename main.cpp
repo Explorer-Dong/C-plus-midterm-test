@@ -9,34 +9,32 @@ public:
 	{
 		p = new int;  *p = x;
 	}
-	A(A& obj)
+	bool operator<(A& obj)
 	{
-		p = new int;  *p = (*obj.p) + 1;
-	}
-	A operator+(int x)
-	{
-		A ans;
-		*ans.p = *p + x;
-		cout << *ans.p << endl;
-		return ans;
-	}
-	A& operator=(const A& obj)
-	{
-		if (this == &obj) return *this;
-		*p = *obj.p + 2;
-		cout << *p << endl;
-		return *this;
+		return S(*this) < S(obj);
 	}
 	virtual ~A()
 	{
-		cout << -(*p) << endl; delete p;
+		cout << S(*this) << endl; delete p;
+	}
+	friend int S(A& obj)
+	{
+		int x = *obj.p;
+		int s = 0;
+		while (x > 0)
+			s += x % 10, x = x / 10;
+		return s;
 	}
 };
 int main()
 {
-	A a1(1), a2;
-	a2 = a1 + 3;
+	A a1(531), a2(246);
+	if (a1 < a2)
+		cout << S(a1) << endl;
+	else
+		cout << S(a2) << endl;
 
 	return 0;
 }
+
 
