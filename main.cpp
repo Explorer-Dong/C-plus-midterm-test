@@ -5,18 +5,26 @@ class A
 {
 	int* p;
 public:
-	A(const int x = 0)
+	A(int x = 0)
 	{
 		p = new int;  *p = x;
 	}
-	A(const A& obj)
+	A(A& obj)
 	{
 		p = new int;  *p = (*obj.p) + 1;
 	}
-	A& operator=(A& obj)
+	A operator+(int x)
+	{
+		A ans;
+		*ans.p = *p + x;
+		cout << *ans.p << endl;
+		return ans;
+	}
+	A& operator=(const A& obj)
 	{
 		if (this == &obj) return *this;
-		*p = *obj.p + 10;
+		*p = *obj.p + 2;
+		cout << *p << endl;
 		return *this;
 	}
 	virtual ~A()
@@ -26,9 +34,9 @@ public:
 };
 int main()
 {
-	A a1(1);
-	A a2(a1), a3;
-	a3 = a2 = a1;
+	A a1(1), a2;
+	a2 = a1 + 3;
 
 	return 0;
 }
+
