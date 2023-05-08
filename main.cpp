@@ -3,10 +3,12 @@ using namespace std;
 
 class A
 {
+
 	int x;
 public:
 	A(int x = 3) :x(x)
 	{
+
 		cout << x << endl;
 	}
 	virtual ~A()
